@@ -46,9 +46,18 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <!-- Secrete Key -->
+        <div>
+            <x-input-label for="secrete_key" :value="__('auth/register.secrete_key')" />
+            <x-text-input placeholder="{{ __('auth/register.secrete_key_placeholder') }}" id="secrete_key" class="block mt-1 w-full" type="password" name="secrete_key" :value="old('secrete_key')" required autofocus autocomplete="secrete_key" />
+
+            <x-input-error :messages="$errors->get('secrete_key')" class="mt-2" />
+            <x-input-error :messages="Session::get('secrete_key')" class="mt-2" />
+        </div>
+
         {{-- Google reCAPTCHA Token --}}
         <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
-        <x-input-error :messages="$errors->get('g-recaptcha-response')" class="mt-2" />
+        <x-input-error :messages="$errors->get('g-recaptcha-response')" class="mt-2"/>
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">

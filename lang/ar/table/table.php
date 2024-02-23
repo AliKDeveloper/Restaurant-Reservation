@@ -52,4 +52,10 @@ return [
     'initialize_tables'=>'كم عدد الطاولات الموجودة في مطعمك؟',
     'number_of_tables'=>'عدد ألطاولات',
     'add'=>'ضيف',
+
+    //Secrete Key
+    'secrete_key'=>'تغير ألكود السري (اختياري)',
+    'secrete_key_placeholder' => 'ننصحك بتغير ألكود السري',
+    'secrete_key_note' => 'ملاحظة: سيكون ألكود السري مطلوبًا في كل مرة عند تسجيل مستخدم جديد',
+    'change_secrete_key_button'=>'تغير ألكود السري',
 ];

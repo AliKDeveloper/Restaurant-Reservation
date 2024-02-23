@@ -52,4 +52,10 @@ return [
     'initialize_tables'=>'How many tables are there in your restaurant',
     'number_of_tables'=>'Number of Tables',
     'add'=>'Add',
+
+    //Secrete Key
+    'secrete_key'=>'Change Secrete Key (optional)',
+    'secrete_key_placeholder' => 'We recommend you to change the secrete key',
+    'secrete_key_note' => 'Note: secrete key will be required everytime when you register new user',
+    'change_secrete_key_button'=>'Change Secrete Key',
 ];

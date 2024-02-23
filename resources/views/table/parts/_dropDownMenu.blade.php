@@ -10,13 +10,14 @@
         </li>
     </ul>
 
+    {{-- Form for Logout --}}
     <div class="py-1">
         <a href="{{ route('logout') }}"
            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
            class="block py-2 px-4 text-sm text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">
             {{ __('table/table.logout_button') }}
         </a>
-        {{-- Form for Logout --}}
+
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>

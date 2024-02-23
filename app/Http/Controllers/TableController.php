@@ -1,8 +1,10 @@
 <?php
 namespace App\Http\Controllers;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Http\Request;
 use App\Models\Table;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class TableController extends Controller
 {
@@ -164,7 +166,42 @@ class TableController extends Controller
             ]);
         }
 
+        if(isset($request->secrete_key))
+        {
+            $path = base_path('config/secretekey.php');
+            $file = file_get_contents($path);
+            $oldSecreteKey = config('secretekey.secrete_key');
+            $newSecreteKey = Hash::make($request->secrete_key);
+
+            if (file_exists($path))
+            {
+                file_put_contents($path, str_replace($oldSecreteKey, $newSecreteKey, $file));
+            }
+        }
+
         return redirect()->route('table.index');
+    }
+
+    public function changeSecreteKey(Request $request)
+    {
+        if(!Hash::check($request->current_secrete_key, config('secretekey.secrete_key')))
+        {
+            return back()->with('current_secrete_key_incorrect', 'The current secrete key is incorrect');
+        }
+
+        $request->validateWithBag('updateSecreteKey',[
+            'new_secrete_key'=>'required|confirmed',
+        ]);
+
+        $path = base_path('config/secretekey.php');
+        $file = file_get_contents($path);
+        $oldSecreteKey = config('secretekey.secrete_key');
+        $newSecreteKey = Hash::make($request->new_secrete_key);
+        if (file_exists($path))
+        {
+            file_put_contents($path, str_replace($oldSecreteKey, $newSecreteKey, $file));
+        }
+        return back()->with('status', 'secrete-key-updated');
     }
 
 }

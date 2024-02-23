@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,18 +30,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Table Routes
+// Table Routes & Secrete Key
 Route::middleware(['auth', 'verified'])->group(function(){
     Route::resource('/table', TableController::class);
     Route::patch('table/cancel/{id}', [TableController::class,'cancel'])->name('table.cancel');
     Route::patch('table/cancel/all/{message}', [TableController::class,'cancelAll'])->name('table.cancelAll');
     Route::post('table/add/tables', [TableController::class,'addTables'])->name('table.addTables');
+    Route::post('secrete/key', [TableController::class,'changeSecreteKey'])->name('secreteKey.change');
 });
 
 //Localization
 Route::get('lang/check', [LanguageController::class, 'check'])->name('lang.check');
 Route::get('lang/{locale}', [LanguageController::class, 'change'])->name('lang.change');
 
-Route::view('tt','table.parts.addTables');
 Route::redirect('/','table');
 require __DIR__.'/auth.php';
