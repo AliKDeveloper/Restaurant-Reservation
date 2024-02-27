@@ -24,7 +24,8 @@ Then follow these steps:
     2. `cp .env.example .env`
     3. `php artisan key:generate`
     4. `php artisan migrate`
-    5. `npm run build`
+    5. `npm install`
+    6. `npm run build`
 3. Define your reCAPTHCA v3 keys in the `.env` file **RECAPTCHA_SITE_KEY** & **RECAPTCHA_SECRET_KEY**
 4. run the project `php artisan serve`
 5. Finally go to link <http://127.0.0.1:8000>
