@@ -15,7 +15,7 @@ Outlines:
 
 ## How to run the project
 
-First of all you have to make sure that your computer has **nodejs**, **composer** and local server such as **XAMPP**
+First of all you have to make sure that your computer have **nodejs**, **composer** and local server such as **XAMPP**
 Then follow these steps:
 1. Download the project as zip file or clone it
     1. `git clone https://github.com/AliKDeveloper/Restaurant-Reservation.git`
